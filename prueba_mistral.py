@@ -9,7 +9,7 @@ def extraerTexto(ruta: str):
     texto = ""
     for pagina in reader.pages:
         texto += pagina.extract_text() + "\n"
-    return
+    return texto
 
 
 # Se divide en chucks para que el modelo no tenga que manejar líneas enteras
@@ -49,7 +49,7 @@ if len(coleccion.get()["ids"]) == 0:
         ids= [str(x) for x in range(len(textoSplit))]
     )
 
-# IMPORTANTE, NO HA SIDO IMPLEMENTADO EL CONTEXTO EN EL MODELO TODAVIA
+# IMPORTANTE, SE HA IMPLEMENTADO PERO NO SE ESTÁ SEGURO
 def pasenContexto(query, k=3):
     query_embedding = modelo.encode([query])
     
@@ -65,13 +65,14 @@ def pasenContexto(query, k=3):
 # Con la referencia ya creada hacemos la prueba con mistral
 # Necesitamos un bucle para la conversación
 def main():
+    contexto = pasenContexto()
     conversacion = [
         {
             "role": "system",
             "content": "Eres un bibliotecario experto en todo el contenido del plan lector del \
             centro y podrías recitar cada libro de memoria, si no es algo hacerca del plan lector \
             di 'No lo se'. Atento, aquí viene el primer alumno ..."
-        },
+        }
     ]
     
     print('-' * 50)
@@ -83,11 +84,20 @@ def main():
         if query.lower() == "salir":
             break
         
-        contexto = pasenContexto()
+        contexto = pasenContexto(query)
+        
+        # Contexto
+        conversacion.append({
+            "role": "system",
+            "content": f"CONTEXTO:\n{contexto}"
+        })
+        
+        # NO guardamos la consulta
         conversacion.append({
             "role": "user",
             "content": query
         })
+        
         # El flush obliga a vaciar el buffer para que el texto salga lo más rápido posible
         print("[Bot]: ", end="", flush=True)
         consulta = ollama.chat(
@@ -104,6 +114,8 @@ def main():
         print()
         print("-"*100)
         print()
+        
+        # Nos guardamos la respuesta
         conversacion.append({
             "role": "assistant",
             "content": respu
