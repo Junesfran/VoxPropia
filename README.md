@@ -1,2 +1,2 @@
 # VoxPropia
-chatBot sobre el plan lector del IES COMERCIO
+chatBot sobre el plan lector del IES COMERCIO 
