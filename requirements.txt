@@ -1,5 +1,0 @@
-pdfplumber
-faiss-cpu
-langchain
-sentence-transformers
-langchain-text-splitters
