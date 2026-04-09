@@ -75,7 +75,7 @@ export default function App() {
     <div className="container">
       {/* HEADER */}
       <div className="header">
-        <h1>Vaya buffas bot 🍆🔥</h1>
+        <h1>Demo modelo RAG</h1>
       </div>
 
       {/* CHAT */}
