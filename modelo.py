@@ -77,8 +77,7 @@ class chatBot():
         
         respu = ""
         for c in consulta:
-            token = c.message.content    
-            print(token, end="", flush=True)
+            token = c.message.content
             respu += token
         
         # Nos guardamos la respuesta

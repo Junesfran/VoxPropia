@@ -16,7 +16,7 @@ def dividirTexto(texto, size=500, overlap=50):
     aux = 0
     while aux < len(texto):
         sigui = aux + size
-        chucks.append(texto[aux:aux+sigui])
+        chucks.append(texto[aux:sigui])
         aux += size - overlap
         
     return chucks
