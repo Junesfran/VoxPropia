@@ -21,14 +21,16 @@ def dividirTexto(texto, size=500, overlap=50):
         
     return chucks
 
-def tratar_pdf(ruta):
-    archivos = os.listdir(ruta)
+def tratar_pdf(ruta= "planLector"):
+    archivos = os.listdir(f"./{ruta}")
 
     pdfs = []
     for arch in archivos:
-        if arch.endsWith(".json"):
+        if arch.endswith(".pdf"):
             texto = extraerTexto(f"./{ruta}/{arch}")
             split = dividirTexto(texto)
             pdfs.append(split)
+            
+    return pdfs
 
             

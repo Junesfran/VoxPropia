@@ -1,6 +1,8 @@
 from flask import Flask, send_file, request, redirect
+import modelo
 
 app = Flask(__name__)
+chatbot = modelo.chatBot()
 
 @app.get('/favicon.ico')
 def nada():
@@ -9,7 +11,9 @@ def nada():
 
 @app.post('/recibir/<promp>')
 def recibir_promp(promp):
-    return f'Promp recibido: {promp} \n Respuesta: No lo se pero hay que despedir a Sebas'
+    respuesta = chatbot.consulta(query= promp)
+
+    return respuesta
 
 @app.post('/login/')
 def login():
