@@ -1,10 +1,11 @@
 from flask import Blueprint, Response, request
 import ollama
 import modelo
+import toxic_class
 
 chat = Blueprint("chat", __name__)
 contexto = modelo.Contexto()
-
+toxic = toxic_class.Toxic()
 
 @chat.post("/chat")
 def ollamer():
@@ -12,6 +13,8 @@ def ollamer():
     messages = convers["messages"]
     
     query = messages[-1]['content']
+    if(toxic.predict(query)):
+        return  Response(f"data: Esta pregunta contiene lenguaje ofensivo, por favor abstente de incluir insultos o lenguaje ofensivo \n\n", content_type='text/event-stream')
     contx = contexto.pasenContexto(query=query)
     
     def generate():
