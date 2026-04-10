@@ -24,7 +24,7 @@ lanzar el fronend react
 
 crear enviroment
 
-        py -m venv .venv
+    py -m venv .venv
 cargar el enviroment
 
     /.venv/Scripts/activated
