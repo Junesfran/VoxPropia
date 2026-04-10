@@ -1,8 +1,10 @@
-# VoxPropia
+**VoxPropia**
+---
+
 chatBot sobre el plan lector del IES COMERCIO 
 ---
 
-# lanzar FrontEnd
+# Lanzar FrontEnd
 
     cd chatbot
 
@@ -17,3 +19,19 @@ comprobar que todo este correctísimo
 lanzar el fronend react
 
     npx vite --host
+
+# Lanzar backend + API
+
+crear enviroment
+
+        py -m venv .venv
+cargar el enviroment
+
+    /.venv/Scripts/activated
+    pip install -r requerements.txt
+posicionarse en la carpeta
+
+    cd modelo
+lanzar api con backend
+
+    py ./run.py
