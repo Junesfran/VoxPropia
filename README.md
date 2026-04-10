@@ -1,4 +1,8 @@
-lanzar FrontEnd
+# VoxPropia
+chatBot sobre el plan lector del IES COMERCIO 
+---
+
+# lanzar FrontEnd
 
     cd chatbot
 
