@@ -1,9 +1,8 @@
 .venv
 data
-modelo
 planLector
 __pycache__
-toxic_model
+modelo/toxic_model
 cliPersist
 .vite
 node_modules
