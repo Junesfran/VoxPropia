@@ -33,4 +33,3 @@ def tratar_pdf(ruta= "planLector"):
             
     return pdfs
 
-            

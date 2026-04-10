@@ -1,3 +1,5 @@
 .venv
 planLector
 cliPersist
+.vite
+node_modules

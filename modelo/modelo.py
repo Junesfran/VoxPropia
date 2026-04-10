@@ -18,15 +18,18 @@ class Contexto:
     
     def setColeccion(self):
         textos = apf.tratar_pdf()
+
+        textos_planos = [t for sublista in textos for t in sublista]
+
         if len(self.coleccion.get()["ids"]) == 0:
-        
-            embebido = self.modelo.encode(textos)
-            for split in textos:
+
+            embeddings = self.modelo.encode(textos_planos)
+            
+            for i, texto in enumerate(textos_planos):
                 self.coleccion.add(
-                    documents=split,
-                    embeddings= embebido.tolist(),
-                    #Los id tiene que ser Strings
-                    ids= [str(x) for x in range(len(split))]
+                    documents=[texto],
+                    embeddings=[embeddings[i].tolist()], 
+                    ids=[str(i)] 
                 )
 
     def pasenContexto(self, query, k=3):
