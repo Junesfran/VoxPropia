@@ -4,3 +4,6 @@ modelo
 planLector
 __pycache__
 toxic_model
+cliPersist
+.vite
+node_modules
