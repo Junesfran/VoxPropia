@@ -193,6 +193,10 @@ html body .irisai-hero .irisai-bar {
 	margin: 0 auto;
 }
 
+.irisai-bar {
+	margin-bottom: 5vh !important;
+}
+
 .irisai-hero .irisai-input {
 	flex: 1;
 	padding: 10px 14px;
@@ -271,4 +275,12 @@ html body .irisai-hero .irisai-bar {
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+p {
+	color: black;
+}
+
+.wp-block-navigation__container a{
+	color: black;
 }

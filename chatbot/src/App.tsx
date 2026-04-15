@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import "./irisai-theme.css"
 
 type Message = {
   role: "user" | "assistant";
@@ -75,8 +76,10 @@ export default function App() {
     <div className="container">
       {/* HEADER */}
       <div className="header">
-        <h1>Demo modelo RAG</h1>
+        <h1 className="wp-block-heading irisai-h1">Ask anything about			<span className="irisai-grad">Your Site</span></h1>
       </div>
+
+      <p className="irisai-sub">Get instant answers about services, pricing, support, and more.		</p>
 
       {/* CHAT */}
       <div className="chat">
@@ -95,16 +98,24 @@ export default function App() {
       </div>
 
       {/* INPUT */}
-      <div className="input-bar">
+      <div className="wp-block-group irisai-bar is-nowrap is-layout-flex">
         <input
+          className="irisai-input"
+          style={{ border: 'none', background: 'transparent', outline: 'none', flexGrow: 1 }}
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
           placeholder="Escribe tu mensaje..."
         />
-
-        <button onClick={() => {sendMessage()}}>
-          Enviar
-        </button>
+        <div className="wp-block-button irisai-btn">
+          <a 
+            className="wp-block-button__link wp-element-button"
+            onClick={() => sendMessage()}
+            style={{ cursor: 'pointer' }}
+          >
+            Enviar
+          </a>
+        </div>
       </div>
     </div>
   );
