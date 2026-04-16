@@ -8,7 +8,7 @@ class Contexto:
     
     def __init__(self):
         self.modelo = SentenceTransformer("multi-qa-mpnet-base-cos-v1")
-        self.cliente = chromadb.PersistentClient(path="./cliPersist")
+        self.cliente = chromadb.Client()
         try:
             self.coleccion = self.cliente.create_collection(name="pdf_docs")
         except:
