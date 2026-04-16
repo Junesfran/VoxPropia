@@ -1,0 +1,97 @@
+openapi: 3.0.3
+info:
+  title: API Chat con Contexto
+  version: 1.0.0
+  description: API para chat con contexto usando streaming y autenticación básica
+
+servers:
+  - url: http://localhost:5000
+
+paths:
+  /chat:
+    post:
+      summary: Chat con streaming de respuesta
+      description: Devuelve una respuesta en streaming basada en el contexto y los mensajes enviados
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - messages
+              properties:
+                messages:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      role:
+                        type: string
+                        example: user
+                      content:
+                        type: string
+                        example: "Hola, ¿cómo funciona git?"
+      responses:
+        '200':
+          description: Respuesta en streaming (SSE)
+          content:
+            text/event-stream:
+              schema:
+                type: string
+                example: "data: respuesta parcial\n\n"
+        '400':
+          description: Error en la petición
+
+  /login:
+    post:
+      summary: Login de usuario
+      description: Autentica al usuario y devuelve telemetrías si es correcto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - usename
+                - password
+              properties:
+                usename:
+                  type: string
+                  example: Hugo
+                password:
+                  type: string
+                  example: quesadilla
+      responses:
+        '200':
+          description: Login correcto
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    uuid:
+                      type: string
+                      example: "asdasdfasdfasefsxcvsdewaed12"
+                    tiempo:
+                      type: string
+                      example: "16/04/2026-10:00:02"
+                    query:
+                      type: string
+                      example: "¿Como se hace un git add?"
+        '401':
+          description: Credenciales incorrectas
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    example: Credenciales incorrectas.
+
+components:
+  schemas: {}
