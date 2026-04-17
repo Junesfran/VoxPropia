@@ -2,21 +2,45 @@ from flask import Blueprint, Response, request, jsonify
 import ollama
 import modelo
 import toxic_class
+import json
+from datetime import datetime
+import logging
+import uuid
+import os
 
 chat = Blueprint("chat", __name__)
 contexto = modelo.Contexto()
 #toxic = toxic_class.Toxic()
+LOG_FILE = './logs/peticiones.json'
+
 
 @chat.post("/chat")
 def ollamer():
     convers = request.json
     messages = convers["messages"]
     
+    id = convers.get('uuid')
+    print(id)
+    if id is None:
+        id = str(uuid.uuid4())
+        
     query = messages[-1]['content']
+    
+    log_entry = {
+        "uuid": id,
+        "tiempo": datetime.now().strftime("%d/%m/%Y-%H:%M:%S"),
+        "query": query
+    }
+
+
+    guardar_log_json(log_entry)
+    logging.info(json.dumps(log_entry))
+    
     # if(toxic.predict(query)):
     #     return  Response(f"data: Esta pregunta contiene lenguaje ofensivo, por favor abstente de incluir insultos o lenguaje ofensivo \n\n", content_type='text/event-stream')
     contx = contexto.pasenContexto(query=query)
-    print(contx)
+    
+    
     def generate():
         context = {
             "role": "system",
@@ -34,7 +58,7 @@ def ollamer():
             content = chunk['message']['content']
             yield f"data: {content}\n\n"
 
-    return Response(generate(), content_type='text/event-stream')
+    return Response(generate(), headers={"uuid": id}, content_type='text/event-stream')
 
 @chat.post("/login")
 def login():
@@ -89,3 +113,18 @@ def telemetrias():
         "query": "¿Cómo deshacer cambios en git?"
     }
 ]
+
+def guardar_log_json(data):
+    """Función auxiliar para persistir los logs en un archivo JSON"""
+    logs = []
+    if os.path.exists(LOG_FILE):
+        try:
+            with open(LOG_FILE, 'r', encoding='utf-8') as f:
+                logs = json.load(f)
+        except (json.JSONDecodeError, IOError):
+            logs = []
+    
+    logs.append(data)
+    
+    with open(LOG_FILE, 'w', encoding='utf-8') as f:
+        json.dump(logs, f, indent=4, ensure_ascii=False)
