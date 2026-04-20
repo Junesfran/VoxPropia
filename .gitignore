@@ -9,3 +9,6 @@ cliPersist
 node_modules
 api
 Voxpropia
+finetuning/Llama3
+finetuning/Llama3-finetuned
+finetuning/Llama3-merged
