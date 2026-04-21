@@ -18,7 +18,7 @@ print("Cargando modelo base...")
 base_model = AutoModelForCausalLM.from_pretrained(
     model_id,
     torch_dtype=torch.float16,
-    device_map={"": "cpu"}, # Forzamos carga limpia en RAM para la fusión
+    device_map="cpu", # Forzamos carga limpia en RAM para la fusión
     token=mi_token,
     trust_remote_code=True,
     low_cpu_mem_usage=True
@@ -30,7 +30,8 @@ print("Acoplando adaptador LoRA...")
 model = PeftModel.from_pretrained(
     base_model, 
     lora_path,
-    token=mi_token
+    token=mi_token,
+    device_map="cpu"
 )
 
 # --- FUSIÓN ---

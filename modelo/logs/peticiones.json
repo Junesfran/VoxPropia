@@ -13,5 +13,10 @@
         "uuid": "41d826f2-fd35-4564-8f93-19491bc2efc3",
         "tiempo": "17/04/2026-11:40:33",
         "query": "dime un libro para leer en 3 de la ESO"
+    },
+    {
+        "uuid": "265bb6dc-b66d-407f-a446-fd3abd52582e",
+        "tiempo": "21/04/2026-11:19:50",
+        "query": "Recomiendame un libro para 3 de la ESO"
     }
 ]
