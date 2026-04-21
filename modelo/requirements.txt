@@ -97,3 +97,5 @@ zipp==3.23.0
 flask
 flask_cors
 beautifulsoup4
+uuid
+pymysql

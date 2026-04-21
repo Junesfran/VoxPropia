@@ -1,0 +1,42 @@
+[
+    {
+        "uuid": null,
+        "tiempo": "17/04/2026-11:35:45",
+        "query": "¿que es un labubu?"
+    },
+    {
+        "uuid": null,
+        "tiempo": "17/04/2026-11:38:44",
+        "query": "¿de que va dracula?"
+    },
+    {
+        "uuid": "41d826f2-fd35-4564-8f93-19491bc2efc3",
+        "tiempo": "17/04/2026-11:40:33",
+        "query": "dime un libro para leer en 3 de la ESO"
+    },
+    {
+        "uuid": "265bb6dc-b66d-407f-a446-fd3abd52582e",
+        "tiempo": "21/04/2026-11:19:50",
+        "query": "Recomiendame un libro para 3 de la ESO"
+    },
+    {
+        "uuid": "c7f1fc83-7f39-4d9e-9844-8236166364da",
+        "tiempo": "21/04/2026-18:10:36",
+        "query": "Que libros hay en enero"
+    },
+    {
+        "uuid": "a7d99aba-cb4a-408a-b404-d02491dc70e1",
+        "tiempo": "21/04/2026-18:10:54",
+        "query": "Que libros hay en enero"
+    },
+    {
+        "uuid": "i6oh46c7h1bfrtrmv679",
+        "tiempo": "21/04/2026-18:14:43",
+        "query": "Dime los libros de enero"
+    },
+    {
+        "uuid": "jye5enggj82tf74js5esi",
+        "tiempo": "21/04/2026-18:27:51",
+        "query": "Hola"
+    }
+]
