@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import "./irisai-theme.css"
 
@@ -10,6 +10,27 @@ type Message = {
 export default function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
+  // Estado para almacenar el identificador de conversación
+  const [uuid, setUuid] = useState<string>("");
+
+  // Inicialización del UUID al cargar la aplicación
+  useEffect(() => {
+    let storedUuid = localStorage.getItem("chat_session_uuid");
+    if (!storedUuid) {
+      // Genera un ID único
+      storedUuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      localStorage.setItem("chat_session_uuid", storedUuid);
+    }
+    setUuid(storedUuid);
+  }, []);
+
+  const resetChat = () => {
+    const nuevoId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    localStorage.setItem("chat_session_uuid", nuevoId);
+    setUuid(nuevoId);
+    setMessages([]);
+    console.log("Conversación reiniciada. Nuevo UUID:", nuevoId);
+  };
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -28,7 +49,8 @@ export default function App() {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        messages: newMessages
+        messages: newMessages,
+        uuid: uuid
       })
     });
 
@@ -76,10 +98,10 @@ export default function App() {
     <div className="container">
       {/* HEADER */}
       <div className="header">
-        <h1 className="wp-block-heading irisai-h1">Ask anything about			<span className="irisai-grad">Your Site</span></h1>
+        <h1 className="wp-block-heading irisai-h1">Preguntale a			<span className="irisai-grad">VoxPropia</span></h1>
       </div>
 
-      <p className="irisai-sub">Get instant answers about services, pricing, support, and more.		</p>
+      <p className="irisai-sub">Obten respuestas casi instantaneas sobre el plan lector		</p>
 
       {/* CHAT */}
       <div className="chat">
@@ -107,13 +129,23 @@ export default function App() {
           onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
           placeholder="Escribe tu mensaje..."
         />
-        <div className="wp-block-button irisai-btn">
+        <div className="wp-block-button irisai-btn enviar-btn">
           <a 
             className="wp-block-button__link wp-element-button"
             onClick={() => sendMessage()}
             style={{ cursor: 'pointer' }}
           >
             Enviar
+          </a>
+        </div>
+        <div className="wp-block-button irisai-btn reiniciar-btn">
+          {/* Botón de Reiniciar (Icono de papelera) */}
+          <a 
+            className="wp-block-button__link wp-element-button"
+            onClick={() => resetChat()}
+            style={{ cursor: 'pointer' }}
+          >
+            Reiniciar 🗑️
           </a>
         </div>
       </div>

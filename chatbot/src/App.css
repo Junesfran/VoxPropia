@@ -41,13 +41,15 @@ body {
 }
 
 .user {
+  background: rgb(65, 138, 38);
   align-self: flex-end;
-  background: #3b82f6;
+  color: white;
 }
 
 .bot {
+  background: rgb(90,192,53);
   align-self: flex-start;
-  background: #1f2937;
+  color: white;
 }
 
 .empty {

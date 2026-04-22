@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+from reportlab.platypus import SimpleDocTemplate, Paragraph
+from reportlab.lib.styles import getSampleStyleSheet
 
 # 1. URL de la página principal
 url = "https://iescomercio.com/convozpropia/actividades/"
@@ -22,7 +24,14 @@ for a in ul.find_all('a'):
 
 # 3. Recorrer cada enlace
 with open("actividades.txt", "w", encoding="utf-8") as f:
+    # Crear documento
+    doc = SimpleDocTemplate("actividades.pdf")
+    # Estilos de texto
+    styles = getSampleStyleSheet()
+    contenido = []
+
     f.write("Actividades\n\n")
+    contenido.append(Paragraph("Actividades\n", styles["Normal"]))
     for link in links:
         print(f"Entrando en: {link}")
         
@@ -57,4 +66,10 @@ with open("actividades.txt", "w", encoding="utf-8") as f:
             f.write(f"Fecha: {fecha}\n")
             f.write(f"Categorías: {', '.join(cat)}\n")
             f.write(f"Información: {info}\n\n")
-            
+
+            contenido.append(Paragraph(f"Titulo: {titulo}",styles["Normal"]))
+            contenido.append(Paragraph(f"Fecha: {fecha}",styles["Normal"]))
+            contenido.append(Paragraph(f"Categorías: {', '.join(cat)}",styles["Normal"]))
+            contenido.append(Paragraph(f"Información: {info}\n",styles["Normal"]))
+
+    doc.build(contenido)    
