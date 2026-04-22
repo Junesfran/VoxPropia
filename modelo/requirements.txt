@@ -98,3 +98,4 @@ flask
 flask_cors
 beautifulsoup4
 reportlab
+pymysql

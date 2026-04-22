@@ -77,7 +77,7 @@
 	padding: 6px 15px;
 	border-radius: 14px;
 	border: none;
-	background: #2563eb;
+	/*background: #2563eb;*/
 	color: #fff;
 	font-weight: 600;
 	box-sizing: border-box;
@@ -87,6 +87,13 @@
 	font-size: 18px;
 }
 
+.enviar-btn {
+  background-color: rgb(65, 138, 38);
+}
+
+.reiniciar-btn {
+  background-color: rgb(214, 21, 21);
+}
 
 /* =========================================================
    Suggestion Chips

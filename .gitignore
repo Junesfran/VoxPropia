@@ -1,4 +1,5 @@
 .venv
+modelo/.venv
 data
 planLector
 __pycache__
@@ -6,3 +7,9 @@ modelo/toxic_model
 cliPersist
 .vite
 node_modules
+api
+Voxpropia
+finetuning/Llama3
+finetuning/Llama3-finetuned
+finetuning/Llama3-merged
+finetuning/llama3.gguf

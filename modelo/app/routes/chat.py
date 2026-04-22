@@ -7,6 +7,7 @@ from datetime import datetime
 import logging
 import uuid
 import os
+import consultas
 
 chat = Blueprint("chat", __name__)
 contexto = modelo.Contexto()
@@ -48,7 +49,7 @@ def ollamer():
         }
         
         stream = ollama.chat(
-            model="mistral:7b",
+            model="llama3-finetuned:latest",
             messages=[context, *messages],
             stream=True,
             think=None
@@ -64,7 +65,9 @@ def ollamer():
 def login():
     user = request.json.get("username")
     pwd = request.json.get("password")
-
+    
+    datos = request.json.get("query")
+    
     if user == "Hugo" and pwd == "quesadilla":
         return jsonify({
             "success": True,
@@ -73,14 +76,30 @@ def login():
                 "email": "hugo@ejemplo.com",
                 "role": "administrator"
             },
-            "telemetria": telemetrias() # Aquí pasas la lista de diccionarios
+            "tablas": tablas(),
+            "telemetria": telemetrias(datos) # Aquí pasas la lista de diccionarios
         }), 200
     
     return jsonify({"success": False, "msg": "Credenciales incorrectas"}), 401
 
+    
+def tablas():
+    #Esto para que no pete mientras no alla RDS
+    return ''
 
-def telemetrias():
+    #Así sería
+    tablas = consultas.mostrar_tablas("SHOW TABLES;")
+    return tablas
+
+def telemetrias(query):
+    if query is not None:
+        telem = consultas.mostrar_tablas(f'SELECT * FROM {query}')
+    else:
+        "Tabla con todos los logs"
+        telem = consultas.mostrar_tablas(f'SELECT * FROM Logs')
+        
     #Temporal hasta tener datos de verdad
+    #Cambiarlo cuando alla RDS
     return [
     {
         "uuid": "asdasdfasdfasefsxcvsdewaed12",
