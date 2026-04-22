@@ -1,0 +1,293 @@
+ 
+
+/* =========================================================
+   Hero
+   ========================================================= */
+
+.irisai-hero {
+	text-align: center;
+	margin-bottom: 32px;
+	opacity: 1;
+}
+
+.irisai-hero .irisai-h1 {
+	font-size: clamp(32px, 5vw, 48px);
+	font-weight: 700;
+	line-height: 1.2;
+	margin: 0 0 16px;
+}
+
+.irisai-hero .irisai-grad {
+	background: linear-gradient(135deg, #2563eb, #7c3aed);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.irisai-hero .irisai-sub {
+	max-width: 640px;
+	margin: 1rem auto;
+	font-size: 18px;
+	line-height: 1.6;
+	opacity: 0.75;
+}
+
+.irisai-landing br{
+    display: none;
+}
+/* =========================================================
+   Input Bar (Preview / Disabled)
+   ========================================================= */
+
+.irisai-hero .irisai-bar-input {
+	position: relative;
+	flex: 1;
+	min-width: 0;
+	display: flex;
+}
+
+.irisai-hero .irisai-bar-input input {
+	width: 100%;
+	padding: 16px 48px 16px 16px;
+	font-size: 16px;
+	border-radius: 14px;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	background: rgba(255, 255, 255, 0.9);
+}
+
+.irisai-hero .irisai-enter {
+	position: absolute;
+	right: 14px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 18px;
+	opacity: 0.4;
+	pointer-events: none;
+}
+
+
+/* =========================================================
+   Button (Preview)
+   ========================================================= */
+
+.irisai-hero  .irisai-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 15px;
+	border-radius: 14px;
+	border: none;
+	/*background: #2563eb;*/
+	color: #fff;
+	font-weight: 600;
+	box-sizing: border-box;
+}
+
+.irisai-hero  .irisai-btn-icon {
+	font-size: 18px;
+}
+
+.enviar-btn {
+  background-color: rgb(65, 138, 38);
+}
+
+.reiniciar-btn {
+  background-color: rgb(214, 21, 21);
+}
+
+/* =========================================================
+   Suggestion Chips
+   ========================================================= */
+
+.irisai-hero .irisai-chips {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 24px;
+
+}
+
+.irisai-hero .irisai-chip {
+    padding: 4px 8px;
+	border-radius: 999px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	background: rgba(255, 255, 255, 0.85);
+	font-size: 14px;
+	font-weight: 500;
+    	margin-top: 1rem;
+}
+
+
+/* =========================================================
+   Disclaimer Text
+   ========================================================= */
+
+.irisai-landing .has-small-font-size {
+	font-size: 13px;
+	margin-top: 12px;
+}
+
+
+/* =========================================================
+   Editor / Preview Safety
+   ========================================================= */
+
+.editor-styles-wrapper .irisai-btn,
+.editor-styles-wrapper .irisai-chip,
+.editor-styles-wrapper input {
+	pointer-events: none;
+}
+
+
+/* =========================================================
+   Responsive Tweaks
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+	.irisai-hero .irisai-bar {
+		flex-direction: column;
+	}
+
+	.irisai-hero .irisai-btn {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.irisai-hero .irisai-chip {
+		flex: 1;
+		min-width: calc(50% - 6px);
+		text-align: center;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+
+	.irisai-hero .irisai-bar {
+		background: linear-gradient(
+			135deg,
+			rgba(0, 0, 0, 0.55),
+			rgba(0, 0, 0, 0.35)
+		);
+		border-color: rgba(255, 255, 255, 0.15);
+	}
+
+	.irisai-hero .irisai-bar-input input,
+	.irisai-hero .irisai-chip {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.15);
+		color: inherit;
+	}
+}
+
+
+ 
+
+/* =========================================================
+   Input Bar (Final Block Styles)
+   ========================================================= */
+
+html body .irisai-hero .irisai-bar {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	background: #fff;
+	padding: 12px 14px;
+	border-radius: 14px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+	max-width: 640px;
+	margin: 0 auto;
+}
+
+.irisai-bar {
+	margin-bottom: 5vh !important;
+}
+
+.irisai-hero .irisai-input {
+	flex: 1;
+	padding: 10px 14px;
+	color: #9ca3af;
+	border: 1px solid #e5e7eb;
+	border-radius: 10px;
+	margin: 0;
+	font-size: 15px;
+	display: flex;
+	height: 35px;
+	align-items: center;
+	justify-content: flex-start;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.irisai-hero .irisai-btn .wp-element-button {
+	padding: 10px 18px;
+	border-radius: 12px;
+	font-weight: 600;
+	background-color: transparent;
+}
+
+.irisai-hero .irisai-chips {
+	justify-content: center;
+	gap: 10px;
+	margin-top: 18px;
+}
+
+.irisai-hero .irisai-chips .wp-element-button {
+	background-color: transparent;
+	color: #000;
+}
+/* =========================================================
+   Chat widget
+   ========================================================= */
+.irisai-widget-header-text h3{
+    color: #fff;
+}
+
+/* =========================================================
+   Asterisk Heading Style
+   ========================================================= */
+
+/* Text asterisk with custom SVG */
+.wp-block-heading.is-style-asterisk::before {
+	content: '';
+ 
+	width: 1.5rem;
+	height: 1.5rem;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='2' x2='12' y2='22'/%3E%3Cline x1='2' y1='12' x2='22' y2='12'/%3E%3Cline x1='4.93' y1='4.93' x2='19.07' y2='19.07'/%3E%3Cline x1='19.07' y1='4.93' x2='4.93' y2='19.07'/%3E%3C/svg%3E");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	vertical-align: middle;
+	transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	filter: drop-shadow(0 2px 4px rgba(37, 99, 235, 0.2));
+	clip-path: none;
+	background-color: transparent;
+}
+
+.wp-block-heading.is-style-asterisk:hover::before {
+	transform: rotate(180deg) scale(1.1);
+	filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.4));
+}
+
+/* Main heading gets continuous rotation */
+.wp-block-heading.is-style-asterisk.has-x-large-font-size::before {
+	animation: asteriskRotate 8s linear infinite;
+}
+
+@keyframes asteriskRotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+p {
+	color: black;
+}
+
+.wp-block-navigation__container a{
+	color: black;
+}

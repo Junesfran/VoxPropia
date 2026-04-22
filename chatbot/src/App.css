@@ -1,3 +1,7 @@
+#root {
+  border-inline: none;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -9,13 +13,15 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 30px;
+  border-radius: 14px;
 }
 
 .header {
   padding: 15px;
-  background: #111827;
+  margin-bottom: 20px;
+  background: rgb(255, 255, 255);
   text-align: center;
-  border-bottom: 1px solid #1f2937;
 }
 
 .chat {
@@ -35,13 +41,15 @@ body {
 }
 
 .user {
+  background: rgb(65, 138, 38);
   align-self: flex-end;
-  background: #3b82f6;
+  color: white;
 }
 
 .bot {
+  background: rgb(90,192,53);
   align-self: flex-start;
-  background: #1f2937;
+  color: white;
 }
 
 .empty {
@@ -77,4 +85,15 @@ button {
 
 button:hover {
   background: #16a34a;
+}
+
+/*
+Chatbot css
+*/
+
+.wp-block-button.is-style-outline
+	> .wp-block-button__link:not(.has-text-color, .has-background):hover {
+	background-color: var(--wp--preset--color--contrast-2, var(--wp--preset--color--contrast, transparent));
+	color: var(--wp--preset--color--base);
+	border-color: var(--wp--preset--color--contrast-2, var(--wp--preset--color--contrast, currentColor));
 }
