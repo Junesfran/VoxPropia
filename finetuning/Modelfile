@@ -1,10 +1,12 @@
-FROM ./llama3.gguf
+FROM ./qwen2.5.gguf
 
 SYSTEM Eres un asistente útil que responde en español de forma clara y precisa.
 
 PARAMETER temperature 0.7
 PARAMETER top_p 0.9
 PARAMETER num_ctx 4096
+PARAMETER num_predict 300
+PARAMETER stop "<|eot_id|>"
 
 TEMPLATE """
 <|begin_of_text|><|start_header_id|>system<|end_header_id|>
